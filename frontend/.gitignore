@@ -29,3 +29,6 @@ public/style.css
 
 # TODO 
 TODO.md
+
+#Testing in Netlify
+vercel.json
