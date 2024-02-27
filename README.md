@@ -26,7 +26,7 @@ Code Sync is a collaborative, real-time code editor where users can seamlessly c
 
 ## 🚀 Live Preview
 
-You can view the live preview of the project [here](https://code-sync-live.vercel.app/).
+You can view the live preview of the project [here](https://code-sync-ankitrajrules.netlify.app/).
 
 ## 💻 Tech Stack
 
@@ -44,7 +44,16 @@ You can view the live preview of the project [here](https://code-sync-live.verce
 ## 📂 Folder Structure
 
 ```
-client/
+backend/
+├── utils/
+│   └── actions.js
+├── .env
+├── .gitignore
+├── package-lock.json
+├── package.json
+└── server.js
+
+frontend/
 ├── public/
 │   ├── favicon/
 │   │   └── ...
@@ -127,15 +136,6 @@ client/
 ├── tailwind.config.js
 └── vercel.json
 └── vite.config.js
-
-server/
-├── utils/
-│   └── actions.js
-├── .env
-├── .gitignore
-├── package-lock.json
-├── package.json
-└── server.js
 
 screenshots/
 CONTRIBUTING.md
