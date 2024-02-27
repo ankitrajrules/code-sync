@@ -4,6 +4,21 @@ require("dotenv").config()
 const http = require("http")
 const cors = require("cors")
 const ACTIONS = require("./utils/actions")
+const User = require("./models/user");
+//mongoose
+const mongoose = require("mongoose");
+
+mongoose.connect(process.env.MONGO_URI, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+  });
+
+const db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open", () => {
+  console.log("Connected to MongoDB");
+});
 
 app.use(express.json())
 
@@ -42,12 +57,17 @@ io.on("connection", (socket) => {
 			username,
 			socketId: socket.id,
 		})
+		User.create({
+			username,
+			roomId,
+			status: ACTIONS.ONLINE,
+		  });
 
 		// Send clients list to all sockets in room
 		io.to(roomId).emit(ACTIONS.UPDATE_CLIENTS_LIST, { clients })
 	})
 
-	socket.on("disconnecting", () => {
+	socket.on("disconnecting", async () => {
 		const rooms = [...socket.rooms]
 		rooms.forEach((roomId) => {
 			const clients = getAllConnectedClient(roomId)
@@ -60,6 +80,11 @@ io.on("connection", (socket) => {
 		})
 
 		delete userSocketMap[socket.id]
+		try {
+			await User.deleteOne({ _id: socket.id });
+		  } catch (err) {
+			console.error(err);
+		  }
 		socket.leave()
 	})
 
@@ -85,19 +110,29 @@ io.on("connection", (socket) => {
 	})
 
 	// Handle user status
-	socket.on(ACTIONS.OFFLINE, ({ roomId, socketId }) => {
+	socket.on(ACTIONS.OFFLINE, async ({ roomId, socketId }) => {
 		userSocketMap[socketId] = {
 			...userSocketMap[socketId],
 			status: ACTIONS.OFFLINE,
 		}
+		try {
+			await User.updateOne({ _id: socketId }, { status: ACTIONS.OFFLINE });
+		  } catch (err) {
+			console.error(err);
+		  }
 		socket.broadcast.to(roomId).emit(ACTIONS.OFFLINE, { socketId })
 	})
 
-	socket.on(ACTIONS.ONLINE, ({ roomId, socketId }) => {
+	socket.on(ACTIONS.ONLINE, async ({ roomId, socketId }) => {
 		userSocketMap[socketId] = {
 			...userSocketMap[socketId],
 			status: ACTIONS.ONLINE,
 		}
+		try {
+			await User.updateOne({ _id: socketId }, { status: ACTIONS.ONLINE });
+		  } catch (err) {
+			console.error(err);
+		  }
 		socket.broadcast.to(roomId).emit(ACTIONS.ONLINE, { socketId })
 	})
 
