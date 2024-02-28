@@ -56,7 +56,7 @@ function ClientsTab() {
                     </button>
                     {/* Leave room button */}
                     <button
-                        className="flex flex-grow justify-center rounded-md bg-primary p-3 text-black"
+                        className="flex flex-grow justify-center rounded-md bg-primary p-3 text-slate-100"
                         onClick={leaveRoom}
                         title="Leave room"
                     >

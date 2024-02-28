@@ -7,7 +7,7 @@ function Toast() {
             toastOptions={{
                 success: {
                     theme: {
-                        primary: "#39E079",
+                        primary: "#5b6dff",
                     },
                 },
             }}

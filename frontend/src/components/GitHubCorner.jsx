@@ -14,7 +14,7 @@ function GitHubCorner() {
                 className="absolute right-0 top-0 z-10 border-none bg-primary text-gray-900 dark:text-gray-100"
                 aria-hidden="true"
                 style={{
-                    color: "#151513",
+                    color: "#fff",
                     transform: "rotate(45deg) translate(12%,-80%) scale(0.8)",
                 }}
             >

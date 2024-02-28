@@ -110,7 +110,7 @@ function FileSystem() {
                 })}
             </div>
             <button
-                className="my-2 flex w-full justify-center rounded-md bg-primary p-2 font-bold text-black transition-all"
+                className="my-2 flex w-full justify-center rounded-md bg-primary p-2 font-bold text-slate-100 transition-all"
                 onClick={handleCreateNewFile}
             >
                 New File

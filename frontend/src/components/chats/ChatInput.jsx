@@ -41,7 +41,7 @@ function ChatInput() {
                 ref={inputRef}
             />
             <button
-                className="flex items-center justify-center rounded-r-md  bg-primary p-2 text-black"
+                className="flex items-center pl-3 justify-center rounded-r-md  bg-primary p-2 text-slate-100"
                 type="submit"
             >
                 <PaperPlaneRight size={24} weight="fill" />
