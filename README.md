@@ -9,24 +9,22 @@ Code Sync is a collaborative, real-time code editor where users can seamlessly c
 
 
 ## 🔮 Features
-
--   💻 Real-time collaboration on code editing across multiple files
--   🚀 Unique room generation with room ID for collaboration
--   🌈 Syntax highlighting for various file types with auto-language detection
--   💡 Auto suggestion based on programming language
--   ⏱️ Instant updates and synchronization of code changes across all files
--   📣 Notifications for user join and leave events
--   🎨 Multiple themes for personalized coding experience
--   🌍 Comprehensive language support for versatile programming
--   🔠 Option to change font size and font family
--   👥 User presence list of users currently in the collaboration session, including online/offline status indicators
--   📁 Open, edit, save, and delete file functionalities
--   💾 Option to download files edited within the collaboration session
--   💬 **Group chatting** allows users to communicate in real-time while working on code.
+-  💻 Seamless real-time collaboration on code editing across various files
+-  🚀 Innovative room generation featuring unique room IDs to facilitate collaboration
+-  🌈 Dynamic syntax highlighting for a diverse range of file types, coupled with automatic language detection
+-  💡 Intelligent auto-suggestion based on the programming language in use
+-  ⏱️ Swift and instantaneous updates ensuring synchronization of code changes across all files
+-  📣 Noteworthy notifications alerting users about join and leave events
+-  🎨 A plethora of themes available for a personalized and visually appealing coding experience
+-  🌍 Extensive language support catering to a wide spectrum of programming languages
+-  🔠 Flexibility to customize font size and font family to suit individual preferences
+-  👥 User presence list providing real-time information on participants in the collaboration session, complete with online/offline status indicators
+-  📁 Effortless management with open, edit, save, and delete file functionalities
+-  💾 Convenient option to download files edited during the collaboration session
+-  💬 Engage in group chatting for effective real-time communication while actively collaborating on code.
 
 ## 🚀 Live Preview
-
-You can view the live preview of the project [here](https://code-sync-ankitrajrules.netlify.app/).
+Live Project [here](https://code-sync-ankitrajrules.netlify.app/).
 
 ## 💻 Tech Stack
 
