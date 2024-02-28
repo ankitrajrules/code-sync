@@ -4,6 +4,7 @@ const userSchema = new mongoose.Schema({
   username: String,
   roomId: String,
   status: String,
+  socketId: String,
 });
 
 const User = mongoose.model("User", userSchema);

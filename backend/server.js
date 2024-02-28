@@ -8,10 +8,7 @@ const User = require("./models/user");
 //mongoose
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGO_URI, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-  });
+mongoose.connect(process.env.MONGO_URI);
 
 const db = mongoose.connection;
 
@@ -61,8 +58,9 @@ io.on("connection", (socket) => {
 			username,
 			roomId,
 			status: ACTIONS.ONLINE,
+			socketId: socket.id,
 		  });
-
+		  console.log(roomId, socket.rooms)
 		// Send clients list to all sockets in room
 		io.to(roomId).emit(ACTIONS.UPDATE_CLIENTS_LIST, { clients })
 	})
@@ -79,12 +77,12 @@ io.on("connection", (socket) => {
 			})
 		})
 
-		delete userSocketMap[socket.id]
 		try {
-			await User.deleteOne({ _id: socket.id });
-		  } catch (err) {
+			await User.deleteOne({ socketId: socket.id });
+		} catch (err) {
 			console.error(err);
-		  }
+		}
+		delete userSocketMap[socket.id]
 		socket.leave()
 	})
 
@@ -116,7 +114,7 @@ io.on("connection", (socket) => {
 			status: ACTIONS.OFFLINE,
 		}
 		try {
-			await User.updateOne({ _id: socketId }, { status: ACTIONS.OFFLINE });
+			await User.updateOne({ socketId: socket.id }, { status: ACTIONS.OFFLINE });
 		  } catch (err) {
 			console.error(err);
 		  }
@@ -129,7 +127,7 @@ io.on("connection", (socket) => {
 			status: ACTIONS.ONLINE,
 		}
 		try {
-			await User.updateOne({ _id: socketId }, { status: ACTIONS.ONLINE });
+			await User.updateOne({ socketId: socket.id }, { status: ACTIONS.ONLINE });
 		  } catch (err) {
 			console.error(err);
 		  }
