@@ -160,6 +160,7 @@ README.md
 
     ```bash
     PORT=3000
+    MONGO_URI=<your_mongodb_connection_string>
     ```
 
 4. **Install dependencies:**
