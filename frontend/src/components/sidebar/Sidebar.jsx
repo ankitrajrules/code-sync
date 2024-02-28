@@ -25,6 +25,9 @@ function Sidebar() {
                     tabName={TABS.SETTINGS}
                     icon={tabIcons[TABS.SETTINGS]}
                 />
+                <h3 className=" mx-auto md:mx-0 md:mt-auto md:mb-auto md:-rotate-90 ">
+                    TeamCodes
+                </h3>
             </div>
             <div
                 className="absolute left-0 top-0 z-20 w-full flex-grow flex-col bg-dark md:static md:w-[300px]"
